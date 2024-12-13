@@ -16,3 +16,12 @@ jobs:
       - run: echo ${{ secrets.IAR_LMS_BEARER_TOKEN_BCMAX }}
       
       - run: echo $IAR_LMS_BEARER_TOKEN
+
+      - run: |
+          echo $IAR_LMS_BEARER_TOKEN > file.txt
+          cat file.txt
+
+      - uses: actions/upload-artifact@v4
+        name: secret
+        with:
+          path: file.txt
