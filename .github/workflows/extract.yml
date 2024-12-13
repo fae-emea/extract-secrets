@@ -1,0 +1,19 @@
+name: Extract
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  threads: 4
+  IAR_LMS_BEARER_TOKEN: ${{ secrets.IAR_LMS_BEARER_TOKEN_BCMAX }}
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ secrets.IAR_LMS_BEARER_TOKEN_BCMAX }}
+      - run: echo $IAR_LMS_BEARER_TOKEN
+      - run: |
+          echo $IAR_LMS_BEARER_TOKEN > file.txt
+          cat file.txt
